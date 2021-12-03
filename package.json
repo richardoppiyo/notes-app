@@ -1,0 +1,16 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "notes app with node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard opiyo",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "validator": "^13.7.0",
+    "yargs": "^17.3.0"
+  }
+}
