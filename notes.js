@@ -2,16 +2,14 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 
-module.exports.getNotes = function(){
+module.exports.getNotes = () => {
     return ("Your notes  ........");
 };
 
 module.exports.addNotes = (title, body)  => {
     const notes = loadNotes()
 
-    const duplicateNotes = notes.filter( (note)  =>  {
-        return note.title === title
-    })
+    const duplicateNotes = notes.filter( (note)  =>  note.title === title); 
 
     if (duplicateNotes.length === 0) {
         notes.push({
@@ -27,9 +25,7 @@ module.exports.addNotes = (title, body)  => {
 
 module.exports.removeNotes = (title) => {
     const notes = loadNotes();
-    const notesToKeep = notes.filter( (note)  => {
-        return note.title !== title
-    })
+    const notesToKeep = notes.filter( (note)  =>  note.title !== title);
     
     if(notes.length > notesToKeep.length){
         saveNotes(notesToKeep);
