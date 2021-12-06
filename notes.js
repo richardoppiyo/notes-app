@@ -6,9 +6,10 @@ module.exports.getNotes = function(){
     return ("Your notes  ........");
 };
 
-module.exports.addNotes = function (title, body) {
+module.exports.addNotes = (title, body)  => {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter(function (note) {
+
+    const duplicateNotes = notes.filter( (note)  =>  {
         return note.title === title
     })
 
@@ -24,9 +25,9 @@ module.exports.addNotes = function (title, body) {
     }
 }
 
-module.exports.removeNotes =  function(title){
+module.exports.removeNotes = (title) => {
     const notes = loadNotes();
-    const notesToKeep = notes.filter(function (note) {
+    const notesToKeep = notes.filter( (note)  => {
         return note.title !== title
     })
     
@@ -40,12 +41,12 @@ module.exports.removeNotes =  function(title){
     
 };
 
-const saveNotes = function(notes){
+const saveNotes =  (notes) => {
     const dataJSON = JSON.stringify(notes);
     fs.writeFileSync('notes.json',dataJSON);
 };
 
-const loadNotes =  function(){
+const loadNotes = () => {
     try{
         const dataBuffer = fs.readFileSync('notes.json');
         const dataJSON = dataBuffer.toString();
