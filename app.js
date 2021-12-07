@@ -59,8 +59,23 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'List a new note',
-    handler(){
-        console.log('Removing the new note');
+    builder:{
+        title:{
+            describe: 'Note Title',
+            demandOptiono: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Notes body',
+            demandOptiono: true,
+            type: 'string'
+
+        }
+    },
+    handler(argv){
+        myNotes.listNotes()
+        // console.log('Title: ' + argv.title);
+        // console.log('Body: ' + argv.body);
     }
     
 })
@@ -69,8 +84,23 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Read a new note',
-    handler(){
-        console.log('Reading the new note');
+    builder:{
+        title:{
+            describe: 'Note Title',
+            demandOptiono: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Notes body',
+            demandOptiono: true,
+            type: 'string'
+
+        }
+    },
+    handler(argv){
+        myNotes.readNotes(argv.title)
+        // console.log('Title: ' + argv.title);
+        // console.log('Body: ' + argv.body);
     }
 })
 

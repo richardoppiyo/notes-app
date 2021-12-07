@@ -9,9 +9,9 @@ module.exports.getNotes = () => {
 module.exports.addNotes = (title, body)  => {
     const notes = loadNotes()
 
-    const duplicateNotes = notes.filter( (note)  =>  note.title === title); 
+    const duplicateNote = notes.find( (note)  =>  note.title === title); 
 
-    if (duplicateNotes.length === 0) {
+    if (!duplicateNotes) {
         notes.push({
             title: title,
             body: body
@@ -33,9 +33,32 @@ module.exports.removeNotes = (title) => {
     }else{
         console.log(chalk.blue('No match'));
     }
-    
-    
 };
+
+
+
+module.exports.listNotes = (title,body) => {
+    const notes = loadNotes();
+
+    notes.forEach(  note => {
+        console.log(chalk.red.underline('Title: ' + note.title));
+        console.log(chalk.blue.inverse('Body: ' + note.body));
+    });
+
+};
+
+module.exports.readNotes = (title) => {
+    const notes = loadNotes();
+    const readNote = notes.find( (note)  =>  note.title === title);
+    
+    if(readNote){
+        console.log(chalk.red.underline('Title: ' + readNote.title));
+        console.log('Body: ' + readNote.body);
+    }else{
+        console.log(chalk.red('No note  on the title provided!'));
+    }
+};
+
 
 const saveNotes =  (notes) => {
     const dataJSON = JSON.stringify(notes);
